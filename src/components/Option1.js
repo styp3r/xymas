@@ -5,58 +5,58 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 const supabase = createClient('https://lgydkxizvydkathymrad.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxneWRreGl6dnlka2F0aHltcmFkIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMTU5ODAsImV4cCI6MTk5OTc5MTk4MH0.nj-_Ft-7vGi22FnKEEfCh8eH5Cd3KimkjyOxagZsvHg');
 
 const Option1 = () => {
-    const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
 
-    useEffect(() => {
-        fetchInitialData();
-    }, []);
+  useEffect(() => {
+    fetchInitialData();
+  }, []);
 
-    const fetchInitialData = async () => {
-        try {
-            const { data, error } = await supabase
-                .from('dailyUPISale')
-                .select('created_at, upi_sale_figure');
-            if (error) {
-                throw error;
-            }
-            setData(data);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    };
+  const fetchInitialData = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('dailyUPISale')
+        .select('created_at, upi_sale_figure');
+      if (error) {
+        throw error;
+      }
+      setData(data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
 
 
-    return (
-        <div id="option1Page">
-            <p style={{ fontWeight: "bold", margin: "1rem 0 3rem 0", fontSize: "25px" }}>Dashboard</p>
-            <p style={{ color: "#8b8b8b", fontSize: "14px" }}>Revenue Overview</p>
-            <div id="option1Content">
-                <div id="saleCard">
-                    {/* Your Option1 content */}
-                    <ResponsiveContainer width="100%" height="100%">
-                        <LineChart
-                            width={500}
-                            height={300}
-                            data={data}
-                            margin={{
-                                top: 5,
-                                right: 30,
-                                left: 20,
-                                bottom: 5,
-                            }}
-                        >
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="id" />
-                            <YAxis />
-                            <Tooltip />
-                            <Legend />
-                            <Line type="monotone" dataKey="upi_sale_figure" stroke="#8884d8" activeDot={{ r: 8 }} />
-                        </LineChart>
-                    </ResponsiveContainer>
-                </div>
-            </div>
+  return (
+    <div id="option1Page">
+      <p style={{ fontWeight: "bold", margin: "1rem 0 3rem 0", fontSize: "25px" }}>Dashboard</p>
+      <p style={{ color: "#8b8b8b", fontSize: "14px" }}>Revenue Overview</p>
+      <div id="option1Content">
+        <div id="saleCard">
+          {/* Your Option1 content */}
+          <ResponsiveContainer id="revenueChart" width="95%" height="70%">
+            <LineChart
+              width={400}
+              height={100}
+              data={data}
+              margin={{
+                top: 5,
+                right: 30,
+                left: 20,
+                bottom: 5,
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="created_at"/>
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Line name = "UPI Sale" type="monotone" dataKey="upi_sale_figure" stroke="#8884d8" activeDot={{ r: 8 }} />
+            </LineChart>
+          </ResponsiveContainer>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Option1;
