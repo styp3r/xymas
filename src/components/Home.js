@@ -39,9 +39,9 @@ const Home = () => {
     }
 
     return (
-        <div className="dashboard-container">
-            <div className="side-panel" style={{ backgroundColor: '#ffffff' }}>
-                <img alt="This is the logo" id = "logo" src = {Logo} ></img>
+        <div id="dashboard-container">
+            <div id="side-panel" style={{ backgroundColor: '#ffffff' }}>
+                <img alt="This is the logo" id="logo" src={Logo} ></img>
                 <div id="option1Btn" className="option" onClick={() => handleOptionClick('option1Btn')}>
                     O Option 1
                 </div>
@@ -52,7 +52,7 @@ const Home = () => {
                     O Option 3
                 </div>
             </div>
-            <div className="content">
+            <div id="content">
                 {componentToDisplay}
             </div>
         </div>
