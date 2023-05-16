@@ -4,6 +4,25 @@
   margin: 0 0 2rem 0;
 }
 
+#option1Page{
+  text-align: left;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+}
+
+#option1Content{
+  display: flex;
+}
+
+#saleCard{
+  width: 45rem;
+  height: 20rem;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  margin: 0 0.5rem  0.5rem 0;
+}
+
 .App {
   text-align: center;
 }
@@ -26,7 +45,8 @@
   cursor: pointer;
   padding: 10px;
   color: #8b8b8b;
-  border-radius: 1rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
   margin: 0 0 1rem 0;
 }
 
@@ -40,6 +60,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f1f1f1;
+  background-color: #f4f2f7;
 }
 

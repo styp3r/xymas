@@ -17,8 +17,8 @@ const Home = () => {
         document.getElementById("option3Btn").style.backgroundColor = '#ffffff';
         document.getElementById("option3Btn").style.color = '#8b8b8b';
 
-        document.getElementById(option).style.backgroundColor = '#755bb4';
-        document.getElementById(option).style.color = '#ffffff';
+        document.getElementById(option).style.backgroundColor = '#d6ccff';
+        document.getElementById(option).style.color = '#755bb4';
     };
 
     let componentToDisplay = null;
@@ -41,7 +41,7 @@ const Home = () => {
     return (
         <div className="dashboard-container">
             <div className="side-panel" style={{ backgroundColor: '#ffffff' }}>
-                <img id = "logo" src = {Logo} ></img>
+                <img alt="This is the logo" id = "logo" src = {Logo} ></img>
                 <div id="option1Btn" className="option" onClick={() => handleOptionClick('option1Btn')}>
                     O Option 1
                 </div>
