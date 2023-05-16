@@ -43,13 +43,13 @@ const Home = () => {
             <div id="side-panel" style={{ backgroundColor: '#ffffff' }}>
                 <img alt="This is the logo" id="logo" src={Logo} ></img>
                 <div id="option1Btn" className="option" onClick={() => handleOptionClick('option1Btn')}>
-                    O Option 1
+                    O Home
                 </div>
                 <div id="option2Btn" className="option" onClick={() => handleOptionClick('option2Btn')}>
-                    O Option 2
+                    O Sales
                 </div>
                 <div id="option3Btn" className="option" onClick={() => handleOptionClick('option3Btn')}>
-                    O Option 3
+                    O Purchases
                 </div>
             </div>
             <div id="content">

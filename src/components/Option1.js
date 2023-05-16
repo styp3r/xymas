@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
-import SaleInsight from './SaleInsight';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const supabase = createClient('https://lgydkxizvydkathymrad.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxneWRreGl6dnlka2F0aHltcmFkIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMTU5ODAsImV4cCI6MTk5OTc5MTk4MH0.nj-_Ft-7vGi22FnKEEfCh8eH5Cd3KimkjyOxagZsvHg');
 
@@ -28,14 +28,31 @@ const Option1 = () => {
 
     return (
         <div id="option1Page">
-            <p style ={{fontWeight: "bold", margin: "1rem 0 3rem 0", fontSize: "25px"}}>Dashboard</p>
-            <p style ={{color: "#8b8b8b", fontSize: "14px"}}>Revenue Overview</p>
+            <p style={{ fontWeight: "bold", margin: "1rem 0 3rem 0", fontSize: "25px" }}>Dashboard</p>
+            <p style={{ color: "#8b8b8b", fontSize: "14px" }}>Revenue Overview</p>
             <div id="option1Content">
                 <div id="saleCard">
                     {/* Your Option1 content */}
-                    {data.map((sale) => (
-                        <SaleInsight key={sale.id} date={sale.created_at} amt={sale.upi_sale_figure} />
-                    ))}
+                    <ResponsiveContainer width="100%" height="100%">
+                        <LineChart
+                            width={500}
+                            height={300}
+                            data={data}
+                            margin={{
+                                top: 5,
+                                right: 30,
+                                left: 20,
+                                bottom: 5,
+                            }}
+                        >
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="id" />
+                            <YAxis />
+                            <Tooltip />
+                            <Legend />
+                            <Line type="monotone" dataKey="upi_sale_figure" stroke="#8884d8" activeDot={{ r: 8 }} />
+                        </LineChart>
+                    </ResponsiveContainer>
                 </div>
             </div>
         </div>
