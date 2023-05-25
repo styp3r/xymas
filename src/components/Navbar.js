@@ -4,7 +4,7 @@ import Option2 from './Option2'
 import Option3 from './Option3'
 import Logo from '../images/xymasLogo.png'
 
-const Home = () => {
+const Navbar = () => {
     const [selectedOption, setSelectedOption] = useState('option1Btn');
 
     const handleOptionClick = (option) => {
@@ -59,4 +59,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default Navbar;
