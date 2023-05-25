@@ -6,18 +6,18 @@ const supabase = createClient('https://lgydkxizvydkathymrad.supabase.co', 'eyJhb
 
 const Option1 = () => {
   const [data, setData] = useState([]);
-  const [selectedMonth, setSelectedMonth] = useState("May");
+  const [selectedYear, setSelectedYear] = useState('2021');
 
   useEffect(() => {
-    fetchInitialData();
-  });
+    fetchInitialData(selectedYear);
+  }, [selectedYear]);
 
-  const fetchInitialData = async () => {
+  const fetchInitialData = async (selectedYear) => {
     try {
       const { data, error } = await supabase
-        .from('dailySale')
-        .select('created_at, upi_sale, cash_sale, card_sale')
-        .eq('month', selectedMonth)
+        .from('monthlySale2023')
+        .select('monthName, upi_figure, cash_figure, card_figure')
+        .eq('year', selectedYear)
       if (error) {
         throw error;
       }
@@ -27,6 +27,10 @@ const Option1 = () => {
     }
   };
 
+  const handleYearChange = (event) => {
+    setSelectedYear(event.target.value);
+  };
+
 
   return (
     <div id="option1Page">
@@ -34,22 +38,11 @@ const Option1 = () => {
       <p style={{ color: "#8b8b8b", fontSize: "14px" }}>Revenue Overview</p>
       <div id="option1Content">
         <div id="saleCard">
-          <select id="selectMonth" defaultValue={"May"}>
-            <option value="January">January</option>
-            <option value="February">February</option>
-            <option value="March">March</option>
-            <option value="April">April</option>
-            <option value="May">May</option>
-            <option value="June">June</option>
-            <option value="July">July</option>
-            <option value="August">August</option>
-            <option value="September">September</option>
-            <option value="October">October</option>
-            <option value="November">November</option>
-            <option value="December">December</option>
-          </select>
-
-          <button type="selectMonthBtn" onClick= {()=>{let m = document.getElementById("selectMonth").value; setSelectedMonth(m)}}>Try it</button>
+        <select id="year" value={selectedYear} onChange={handleYearChange}>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+      </select>
           {/* Your Option1 content */}
           <ResponsiveContainer id="revenueChart" width="95%" height="70%">
             <LineChart
@@ -64,13 +57,13 @@ const Option1 = () => {
               }}
             >
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="created_at" />
+              <XAxis dataKey="monthName"/>
               <YAxis />
               <Tooltip />
               <Legend />
-              <Line name="UPI Sale" type="monotone" dataKey="upi_sale" stroke="#002E6E" activeDot={{ r: 8 }} />
-              <Line name="Cash Sale" type="monotone" dataKey="cash_sale" stroke="#00cc00" activeDot={{ r: 8 }} />
-              <Line name="Card Sale" type="monotone" dataKey="card_sale" stroke="#8884d8" activeDot={{ r: 8 }} />
+              <Line name = "UPI Sale" type="monotone" dataKey="upi_figure" stroke="#002E6E" activeDot={{ r: 8 }} />
+              <Line name = "Cash Sale" type="monotone" dataKey="cash_figure" stroke="#00cc00" activeDot={{ r: 8 }} />
+              <Line name = "Card Sale" type="monotone" dataKey="card_figure" stroke="#8884d8" activeDot={{ r: 8 }} />
             </LineChart>
           </ResponsiveContainer>
         </div>
