@@ -1,35 +1,61 @@
 import React, { useEffect, useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const supabase = createClient('https://lgydkxizvydkathymrad.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxneWRreGl6dnlka2F0aHltcmFkIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMTU5ODAsImV4cCI6MTk5OTc5MTk4MH0.nj-_Ft-7vGi22FnKEEfCh8eH5Cd3KimkjyOxagZsvHg');
 
 const Option1 = () => {
   const [data, setData] = useState([]);
+  const [data1, setData1] = useState([]);
   const [selectedYear, setSelectedYear] = useState('2021');
-
-  useEffect(() => {
-    fetchInitialData(selectedYear);
-  }, [selectedYear]);
-
-  const fetchInitialData = async (selectedYear) => {
-    try {
-      const { data, error } = await supabase
-        .from('monthlySale2023')
-        .select('monthName, upi_figure, cash_figure, card_figure')
-        .eq('year', selectedYear)
-      if (error) {
-        throw error;
-      }
-      setData(data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
+  const [selectedMonth, setSelectedMonth] = useState('May');
 
   const handleYearChange = (event) => {
     setSelectedYear(event.target.value);
   };
+
+  const handleMonthChange = (event) => {
+    setSelectedMonth(event.target.value);
+  };
+
+  useEffect(() => {
+  
+    const fetchMonthlyData = async (selectedYear) => {
+      try {
+        const { data, error } = await supabase
+          .from('monthlySale2023')
+          .select('monthName, upi_figure, cash_figure, card_figure')
+          .eq('year', selectedYear)
+        if (error) {
+          throw error;
+        }
+        setData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    const fetchDailyData = async (selectedMonth) => {
+      let x = String(selectedMonth+selectedYear);
+      try {
+        const { data, error } = await supabase
+          .from('dailySale2023')
+          .select('created_at, upi_sale, cash_sale, card_sale')
+          .eq('month', x)
+        if (error) {
+          throw error;
+        }
+        setData1(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchMonthlyData(selectedYear);
+    fetchDailyData(selectedMonth);
+
+  }, [selectedYear, selectedMonth]);
+
 
 
   return (
@@ -37,12 +63,12 @@ const Option1 = () => {
       <p style={{ fontWeight: "bold", margin: "1rem 0 3rem 0", fontSize: "25px" }}>Dashboard</p>
       <p style={{ color: "#8b8b8b", fontSize: "14px" }}>Revenue Overview</p>
       <div id="option1Content">
-        <div id="saleCard">
-        <select id="year" value={selectedYear} onChange={handleYearChange}>
-        <option value="2021">2021</option>
-        <option value="2022">2022</option>
-        <option value="2023">2023</option>
-      </select>
+        <div id="revOverviewCard1">
+          <select id="yearSelect" value={selectedYear} onChange={handleYearChange}>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+          </select>
           {/* Your Option1 content */}
           <ResponsiveContainer id="revenueChart" width="95%" height="70%">
             <LineChart
@@ -56,14 +82,43 @@ const Option1 = () => {
                 bottom: 5,
               }}
             >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="monthName"/>
-              <YAxis />
-              <Tooltip />
+              <XAxis dataKey="monthName" stroke="#8c8c8c" />
+              <YAxis stroke="#8c8c8c" />
+              <Tooltip contentStyle={{ borderRadius: '1rem' }} />
               <Legend />
-              <Line name = "UPI Sale" type="monotone" dataKey="upi_figure" stroke="#002E6E" activeDot={{ r: 8 }} />
-              <Line name = "Cash Sale" type="monotone" dataKey="cash_figure" stroke="#00cc00" activeDot={{ r: 8 }} />
-              <Line name = "Card Sale" type="monotone" dataKey="card_figure" stroke="#8884d8" activeDot={{ r: 8 }} />
+              <Line name="UPI Sale" type="monotone" dataKey="upi_figure" stroke="#00ccff" strokeWidth={2} />
+              <Line name="Cash Sale" type="monotone" dataKey="cash_figure" stroke="#9933ff" strokeWidth={2} />
+              <Line name="Card Sale" type="monotone" dataKey="card_figure" stroke="#ff0066" strokeWidth={2} />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+
+        <div id="revOverviewCard2">
+          <select id="monthSelect" value={selectedMonth} onChange={handleMonthChange}>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+          </select>
+          {/* Your Option1 content */}
+          <ResponsiveContainer id="revenueChart1" width="95%" height="70%">
+            <LineChart
+              width={400}
+              height={100}
+              data={data1}
+              margin={{
+                top: 5,
+                right: 30,
+                left: 20,
+                bottom: 5,
+              }}
+            >
+              <XAxis dataKey="created_at" angle={-45} textAnchor="end" interval={0} height={60} stroke="#8c8c8c" />
+              <YAxis stroke="#8c8c8c" />
+              <Tooltip contentStyle={{ borderRadius: '1rem' }} />
+              <Legend />
+              <Line name="UPI Sale" type="monotone" dataKey="upi_sale" stroke="#00ccff" strokeWidth={2} />
+              <Line name="Cash Sale" type="monotone" dataKey="cash_sale" stroke="#9933ff" strokeWidth={2} />
+              <Line name="Card Sale" type="monotone" dataKey="card_sale" stroke="#ff0066" strokeWidth={2} />
             </LineChart>
           </ResponsiveContainer>
         </div>
