@@ -1,6 +1,6 @@
 const Option2 = () => {
     return (
-        <p>Option 2 Page</p>
+        <div id = "option2Page"><p>Option2 Page</p></div>
     );
 }
 
