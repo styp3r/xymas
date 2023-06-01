@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
-
     const handleClick = (event) =>{
         document.getElementById('link1').style.backgroundColor = "#ffffff";
         document.getElementById('link1').style.color = "#9481b1";

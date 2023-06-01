@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
-import { LineChart, BarChart, Bar, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { Radar, RadarChart, PolarAngleAxis, LineChart, BarChart, Bar, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const supabase = createClient('https://lgydkxizvydkathymrad.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxneWRreGl6dnlka2F0aHltcmFkIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMTU5ODAsImV4cCI6MTk5OTc5MTk4MH0.nj-_Ft-7vGi22FnKEEfCh8eH5Cd3KimkjyOxagZsvHg');
 
@@ -9,6 +9,11 @@ const Option1 = () => {
   const [data1, setData1] = useState([]);
   const [selectedYear, setSelectedYear] = useState('2021');
   const [selectedMonth, setSelectedMonth] = useState('May');
+
+  const [dataShopwise1, setDataShopwise1] = useState([]);
+
+  const [sum, setSum] = useState(0);
+  const [sum1, setSum1] = useState(0);
 
   const handleYearChange = (event) => {
     setSelectedYear(event.target.value);
@@ -30,6 +35,20 @@ const Option1 = () => {
           throw error;
         }
         setData(data);
+
+        //Calculating sum of all 3 columns
+        const upiValues = data.map((row) => row.upi_figure);
+        const sumUpi = upiValues.reduce((acc, value) => acc + value, 0);
+
+        const cashValues = data.map((row) => row.cash_figure);
+        const sumCash = cashValues.reduce((acc, value) => acc + value, 0);
+
+        const cardValues = data.map((row) => row.card_figure);
+        const sumCard = cardValues.reduce((acc, value) => acc + value, 0);
+
+        let finalSum = sumUpi + sumCash + sumCard;
+
+        setSum(finalSum);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -40,12 +59,55 @@ const Option1 = () => {
       try {
         const { data, error } = await supabase
           .from('dailySale2023')
-          .select('created_at, upi_sale, cash_sale, card_sale, total')
+          .select('created_at, upi_sale, cash_sale, card_sale')
           .eq('month', x)
         if (error) {
           throw error;
         }
+
         setData1(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    const fetchDailyData_MR = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('dailySale2023')
+          .select('upi_sale, cash_sale, card_sale')
+        if (error) {
+          throw error;
+        }
+
+        //Calculating sum of all 3 columns
+        const upiValues = data.map((row) => row.upi_sale);
+        const sumUpi = upiValues.reduce((acc, value) => acc + value, 0);
+
+        const cashValues = data.map((row) => row.cash_sale);
+        const sumCash = cashValues.reduce((acc, value) => acc + value, 0);
+
+        const cardValues = data.map((row) => row.card_sale);
+        const sumCard = cardValues.reduce((acc, value) => acc + value, 0);
+
+        let finalSum = sumUpi + sumCash + sumCard;
+        setSum1(finalSum);
+
+        setData1(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    const fetchShopwiseData = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('shopwisePerf')
+          .select('avgMonthlySale, shopName')
+        if (error) {
+          throw error;
+        }
+        setDataShopwise1(data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -53,6 +115,8 @@ const Option1 = () => {
 
     fetchMonthlyData(selectedYear);
     fetchDailyData(selectedMonth);
+    fetchDailyData_MR();
+    fetchShopwiseData();
 
   }, [selectedYear, selectedMonth]);
 
@@ -60,18 +124,30 @@ const Option1 = () => {
     <div id="option1Page">
       <div id="option1Content">
         <p style={{ fontWeight: "bold", margin: "1rem 0 3rem 0", fontSize: "25px" }}>Dashboard</p>
+
         <div id="heroContainer">
           <div id="totalRevContainer">
-            <div className="totalSaleWeekly"></div>
-            <div className="totalSaleMonthly"></div>
-            <div className="totalSaleYearly"></div>
+            <div className="totalSaleWeekly">DAILY REVENUE</div>
+            <div className="totalSaleMonthly">MONTHLY REVENUE &#8377;{sum1}</div>
+            <div className="totalSaleYearly">TOTAL REVENUE &#8377;{sum}</div>
           </div>
 
-          <div id="shopWisePerformance"></div>
+          <div id="shopWisePerfContainer">
+            <div className="shopWisePerformance">
+              {/* insert radar chart for shopwise performance */}
+              <p>SHOPWISE MONTHLY PERFORMACE</p>
+              <ResponsiveContainer width="100%" height="100%">
+                <RadarChart cx="50%" cy="50%" outerRadius="80%" data={dataShopwise1}>
+                  <PolarAngleAxis dataKey="shopName" />
+                  <Radar name="Mike" dataKey="avgMonthlySale" fill="#9933ff" fillOpacity={0.3} />
+                </RadarChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
         </div>
 
         <div id="monthlyRevOverview">
-          <p style={{ color: "#8b8b8b", fontSize: "14px" }}>Monthly Revenue Overview</p>
+          <p style={{ color: "#8b8b8b", fontSize: "14px" }}>MONTHLY REVENUE OVERVIEW</p>
           <div id="revOverviewCard1">
             <select id="yearSelect" value={selectedYear} onChange={handleYearChange}>
               <option value="2018">2018</option>
@@ -108,7 +184,7 @@ const Option1 = () => {
         </div>
 
         <div id="dailyRevOverview">
-          <p style={{ color: "#8b8b8b", fontSize: "14px" }}>Daily Revenue Overview</p>
+          <p style={{ color: "#8b8b8b", fontSize: "14px" }}>DAILY REVENUE OVERVIEW</p>
           <div id="revOverviewCard2">
             <select id="monthSelect" value={selectedMonth} onChange={handleMonthChange}>
               <option value="January">January</option>
