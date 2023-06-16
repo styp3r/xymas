@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { Radar, RadarChart, PolarAngleAxis, LineChart, BarChart, Bar, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import SmallCard from './SmallCard';
 
 const supabase = createClient('https://lgydkxizvydkathymrad.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxneWRreGl6dnlka2F0aHltcmFkIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMTU5ODAsImV4cCI6MTk5OTc5MTk4MH0.nj-_Ft-7vGi22FnKEEfCh8eH5Cd3KimkjyOxagZsvHg');
 
@@ -126,16 +127,19 @@ const Option1 = () => {
         <p style={{ fontWeight: "bold", margin: "1rem 0 3rem 0", fontSize: "25px" }}>Dashboard</p>
 
         <div id="heroContainer">
+
           <div id="totalRevContainer">
-            <div className="totalSaleWeekly">DAILY REVENUE</div>
-            <div className="totalSaleMonthly">MONTHLY REVENUE &#8377;{sum1}</div>
-            <div className="totalSaleYearly">TOTAL REVENUE &#8377;{sum}</div>
+            <SmallCard key="totalSaleMonthly" title="TOTAL SALE (LAST 30 DAYS)" value={sum1} width='33rem' height='16rem' margin= '0 0 1rem 0'/>
+            <SmallCard key="totalSaleYearly" title="TOTAL SALE (LAST 1 YEAR)" value={sum} width='33rem' height='16rem' margin= '2rem 0 0 0'/>
+            {/*<div className="totalSaleWeekly">TODAY'S SALE</div>
+            <div className="totalSaleMonthly">THIS MONTH'S SALE &#8377;{sum1}</div>
+            <div className="totalSaleYearly">THIS YEAR'S SALE &#8377;{sum}</div>*/}
           </div>
 
           <div id="shopWisePerfContainer">
             <div className="shopWisePerformance">
               {/* insert radar chart for shopwise performance */}
-              <p>SHOPWISE MONTHLY PERFORMACE</p>
+              <p style = {{margin: 0}}>AVERAGE PERFORMANCE</p>
               <ResponsiveContainer width="100%" height="100%">
                 <RadarChart cx="50%" cy="50%" outerRadius="80%" data={dataShopwise1}>
                   <PolarAngleAxis dataKey="shopName" />
@@ -144,6 +148,7 @@ const Option1 = () => {
               </ResponsiveContainer>
             </div>
           </div>
+
         </div>
 
         <div id="monthlyRevOverview">
