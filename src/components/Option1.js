@@ -131,19 +131,16 @@ const Option1 = () => {
           <div id="totalRevContainer">
             <SmallCard key="totalSaleMonthly" title="TOTAL SALE (LAST 30 DAYS)" value={sum1} width='33rem' height='16rem' margin= '0 0 1rem 0'/>
             <SmallCard key="totalSaleYearly" title="TOTAL SALE (LAST 1 YEAR)" value={sum} width='33rem' height='16rem' margin= '2rem 0 0 0'/>
-            {/*<div className="totalSaleWeekly">TODAY'S SALE</div>
-            <div className="totalSaleMonthly">THIS MONTH'S SALE &#8377;{sum1}</div>
-            <div className="totalSaleYearly">THIS YEAR'S SALE &#8377;{sum}</div>*/}
           </div>
 
           <div id="shopWisePerfContainer">
             <div className="shopWisePerformance">
               {/* insert radar chart for shopwise performance */}
-              <p style = {{margin: 0}}>AVERAGE PERFORMANCE</p>
-              <ResponsiveContainer width="100%" height="100%">
+              <p style = {{color:'#929292', margin: '2rem 12rem 2rem 0'}}>AVERAGE PERFORMANCE</p>
+              <ResponsiveContainer width="80%" height="80%">
                 <RadarChart cx="50%" cy="50%" outerRadius="80%" data={dataShopwise1}>
                   <PolarAngleAxis dataKey="shopName" />
-                  <Radar name="Mike" dataKey="avgMonthlySale" fill="#9933ff" fillOpacity={0.3} />
+                  <Radar name="Mike" dataKey="avgMonthlySale" fill="#9481b1" fillOpacity={1}/>
                 </RadarChart>
               </ResponsiveContainer>
             </div>

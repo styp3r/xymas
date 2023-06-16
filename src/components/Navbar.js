@@ -7,15 +7,15 @@ const Navbar = () => {
     const [lastUpdated, setLastUpdated] = useState([]);
 
     const handleClick = (event) =>{
-        document.getElementById('link1').style.backgroundColor = "#ffffff";
-        document.getElementById('link1').style.color = "#9481b1";
-        document.getElementById('link2').style.backgroundColor = "#ffffff";
-        document.getElementById('link2').style.color = "#9481b1";
-        document.getElementById('link3').style.backgroundColor = "#ffffff";
-        document.getElementById('link3').style.color = "#9481b1";
+        document.getElementById('link1').style.backgroundColor = "#9481b1";
+        document.getElementById('link1').style.color = "#ffffff";
+        document.getElementById('link2').style.backgroundColor = "#9481b1";
+        document.getElementById('link2').style.color = "#ffffff";
+        document.getElementById('link3').style.backgroundColor = "#9481b1";
+        document.getElementById('link3').style.color = "#ffffff";
 
-        document.getElementById(event.target.id).style.backgroundColor = "#9481b1";
-        document.getElementById(event.target.id).style.color = "#ffffff";
+        document.getElementById(event.target.id).style.backgroundColor = "#ffffff";
+        document.getElementById(event.target.id).style.color = "#9481b1";
 
     }
 
