@@ -114,10 +114,10 @@ const Option1 = () => {
       }
     };
 
-    fetchMonthlyData(selectedYear);
+    /*fetchMonthlyData(selectedYear);
     fetchDailyData(selectedMonth);
     fetchDailyData_MR();
-    fetchShopwiseData();
+    fetchShopwiseData(); */
 
   }, [selectedYear, selectedMonth]);
 
