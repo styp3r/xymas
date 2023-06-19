@@ -91,10 +91,38 @@
   100% {font-size: 2rem;}
 }
 
+#welcomeMessage{
+  animation-name: welcomeMessage_appear;
+  animation-duration: 1s;
+  opacity: 0;
+  animation-delay: 0.7s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes welcomeMessage_appear{
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
 #option1Content{
   display: flex;
   flex-direction: column;
   padding: 2rem;
+}
+
+#option1TopBar{
+  display: flex;
+  position: relative;
+}
+
+#notifications{
+  position: absolute;
+  right: 3rem;
+  color: #4b4b4b;
+}
+
+#notifications:hover{
+  cursor: pointer;
 }
 
 #monthlyRevOverview, #dailyRevOverview{
@@ -120,6 +148,7 @@
   text-align: center;
   overflow-x: hidden;
   background-color: #f1f3f4;
+  font-family: 'Montserrat', sans-serif;
 }
 
 #navbar {

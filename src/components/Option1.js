@@ -126,13 +126,17 @@ const Option1 = () => {
   return (
     <div id="option1Page">
       <div id="option1Content">
-        <p style={{ fontWeight: "bold", margin: "1rem 0 3rem 0", fontSize: "25px" }}>Dashboard</p>
+        <div id = "option1TopBar">
+          <p style={{ fontWeight: "bold", margin: "0 0 3rem 0", fontSize: "25px", color: '#a6a6a6' }}>XyMas Dashboard</p>
+          <div id="notifications"><span class="material-symbols-rounded">notifications</span></div>
+        </div>
 
         <div id="heroContainer">
 
           <div id="totalRevContainer">
-            <div id = "welcomeMessage">
-              <p><span style={{ fontWeight: 300}}>Hello</span> Navjyot</p>
+
+            <div id="welcomeMessage">
+              <p style={{ color: '#4b4b4b', fontSize: '3rem', fontWeight: 300 }} >Hello <span style={{ fontWeight: 700 }}>Navjyot</span></p>
               <p>Here are your latest updates. <span>You've got <span style={{ fontWeight: 700 }}>{notifNum}</span> notifications.</span></p>
             </div>
 
