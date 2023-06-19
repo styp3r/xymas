@@ -12,11 +12,87 @@
   margin: 0 0 0 7rem;
 }
 
-#link1, #link2, #link3{
+#option1Page{
+  opacity: 0;
+  animation-name: card_appear;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-delay: 6.5s;
+  animation-fill-mode: forwards;
+}
+
+#link1, #link2, #link3, #link4, #link5, #link6, #link7, #link8, #link9, #link10{
   text-decoration: none;
-  color: #c8d0d5;
+  color: #bbc4ca;
   margin: 1rem 0 1rem 0;
   font-size: 2rem;
+}
+
+#link1{
+  animation-name: link_pulse;
+  animation-duration: 0.5s;
+  animation-delay: 6s;
+}
+
+
+#link2{
+  animation-name: link_pulse;
+  animation-duration: 0.5s;
+  animation-delay: 6.1s;
+}
+
+#link3{
+  animation-name: link_pulse;
+  animation-duration: 0.5s;
+  animation-delay: 6.2s;
+}
+
+#link4{
+  animation-name: link_pulse;
+  animation-duration: 0.5s;
+  animation-delay: 6.3s;
+}
+
+#link5{
+  animation-name: link_pulse;
+  animation-duration: 0.5s;
+  animation-delay: 6.4s;
+}
+
+#link6{
+  animation-name: link_pulse;
+  animation-duration: 0.5s;
+  animation-delay: 6.5s;
+}
+
+#link7{
+  animation-name: link_pulse;
+  animation-duration: 0.5s;
+  animation-delay: 6.6s;
+}
+
+#link8{
+  animation-name: link_pulse;
+  animation-duration: 0.5s;
+  animation-delay: 6.7s;
+}
+
+#link9{
+  animation-name: link_pulse;
+  animation-duration: 0.5s;
+  animation-delay: 6.8s;
+}
+
+#link10{
+  animation-name: link_pulse;
+  animation-duration: 0.5s;
+  animation-delay: 6.9s;
+}
+
+@keyframes link_pulse{
+  0% {font-size: 2rem;}
+  50% {font-size: 2.5rem;}
+  100% {font-size: 2rem;}
 }
 
 #option1Content{
@@ -52,6 +128,7 @@
 
 #navbar {
   display: flex;
+  opacity: 0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -61,10 +138,22 @@
   text-align: center;
   position: fixed;
   background-color: #ffffff;
+  animation-name: navbar_appear;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  animation-delay: 5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes navbar_appear {
+  0% {position: absolute; left: -6rem;}
+  50% {left: 0;}
+  100% {opacity: 1; position: fixed;}
 }
 
 #navbarLinks{
-  margin: 0 0 10rem 0;
+  display: flex;
+  flex-direction: column;
 }
 
 #yearSelect, #monthSelect{
@@ -134,5 +223,10 @@
   box-shadow: 0px 0px 10px 1px #d9d9d9;
   border-radius: 0.3rem;
   position: relative;
+}
+
+@keyframes card_appear{
+  0% {opacity: 0;}
+  100%{opacity: 1;}
 }
 

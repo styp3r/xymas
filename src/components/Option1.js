@@ -114,10 +114,10 @@ const Option1 = () => {
       }
     };
 
-    /*fetchMonthlyData(selectedYear);
+    {/*fetchMonthlyData(selectedYear);
     fetchDailyData(selectedMonth);
     fetchDailyData_MR();
-    fetchShopwiseData(); */
+  fetchShopwiseData(); */}
 
   }, [selectedYear, selectedMonth]);
 
@@ -129,7 +129,7 @@ const Option1 = () => {
         <div id="heroContainer">
 
           <div id="totalRevContainer">
-            <SmallCard key="totalSaleMonthly" title="TOTAL SALE (LAST 30 DAYS)" value={sum1} width='33rem' height='16rem' margin= '0 0 1rem 0' bgColor = 'linear-gradient(#ccfff2, #66ffd9)' color = "#4b4b4b"/>
+            <SmallCard key="totalSaleMonthly" title="TOTAL SALE (LAST 30 DAYS)" value={sum1} width='33rem' height='16rem' margin= '0 0 1rem 0' bgColor = '#ccfff2' color = "#4b4b4b"/>
             <SmallCard key="totalSaleYearly" title="TOTAL SALE (LAST 1 YEAR)" value={sum} width='33rem' height='16rem' margin= '2rem 0 0 0'/>
           </div>
 
