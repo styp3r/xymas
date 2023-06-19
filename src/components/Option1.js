@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { Radar, RadarChart, PolarAngleAxis, LineChart, BarChart, Bar, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import SmallCard from './SmallCard';
+import ScrollCard from './ScrollCard';
 import NotificationsIcon from './Notifications'
 
 const supabase = createClient('https://lgydkxizvydkathymrad.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxneWRreGl6dnlka2F0aHltcmFkIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMTU5ODAsImV4cCI6MTk5OTc5MTk4MH0.nj-_Ft-7vGi22FnKEEfCh8eH5Cd3KimkjyOxagZsvHg');
@@ -145,7 +146,8 @@ const Option1 = () => {
           <div id="shopWisePerfContainer">
             <div className="shopWisePerformance">
               {/* insert radar chart for shopwise performance */}
-              <p style={{ color: '#929292', margin: '2rem 12rem 2rem 0' }}>AVERAGE PERFORMANCE</p>
+              <p style={{ color: '#929292', fontWeight: 800, margin: '2rem 12rem 0 0' }}>OUTLET PERFORMANCE</p>
+              <p style={{ color: '#929292', margin: '0.3rem 12rem 2rem 1.5rem', fontSize: '0.9rem' }}>based on monthly average sales</p>
               <ResponsiveContainer width="80%" height="80%">
                 <RadarChart cx="50%" cy="50%" outerRadius="80%" data={dataShopwise1}>
                   <PolarAngleAxis dataKey="shopName" />
@@ -156,13 +158,13 @@ const Option1 = () => {
           </div>
 
           <div id="shopStatus">
-            <SmallCard key="liveShopStatus" title="OUTLET STATUS" width='16rem' height='52rem' margin='0 0 0 2.3rem' overflow="scroll" />
+            <ScrollCard key="liveShopStatus" title="OUTLET STATUS" width='16rem' height='52rem' margin='0 0 0 2.3rem' overflow="scroll" color='#4b4b4b' />
           </div>
 
         </div>
 
         <div id="monthlyRevOverview">
-          <p style={{ color: "#8b8b8b", fontSize: "14px" }}>MONTHLY REVENUE OVERVIEW</p>
+          <p style={{ color: "#8b8b8b", fontSize: "14px", fontWeight: 800 }}>MONTHLY REVENUE OVERVIEW</p>
           <div id="revOverviewCard1">
             <select id="yearSelect" value={selectedYear} onChange={handleYearChange}>
               <option value="2018">2018</option>
@@ -199,7 +201,7 @@ const Option1 = () => {
         </div>
 
         <div id="dailyRevOverview">
-          <p style={{ color: "#8b8b8b", fontSize: "14px" }}>DAILY REVENUE OVERVIEW</p>
+          <p style={{ color: "#8b8b8b", fontSize: "14px", fontWeight: 800 }}>DAILY REVENUE OVERVIEW</p>
           <div id="revOverviewCard2">
             <select id="monthSelect" value={selectedMonth} onChange={handleMonthChange}>
               <option value="January">January</option>

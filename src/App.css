@@ -292,3 +292,49 @@
   align-items: center;
 }
 
+.scrollCard{
+  background: #ffffff;
+  box-shadow: 0px 0px 10px 1px #d9d9d9;
+  border-radius: 0.3rem;
+  position: relative;
+}
+
+.scrollCardValue{
+  color: #000000;
+  font-weight: bold;
+  font-size: 3rem;
+  position: absolute;
+  bottom: 1rem;
+  left: 3rem;
+}
+
+.scrollCardTitle{
+  color: #929292;
+  margin: 0;
+  position: absolute;
+  top: 2.7rem;
+  left: 2rem;
+}
+
+.outletStatusList{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  padding: 0.2rem 1rem 1rem 1rem;
+  margin: 5rem 0 0 0;
+}
+
+.statusCard{
+  width: 10rem;
+  background-color: #f0efef;
+  border-radius: 0.2rem;
+  padding: 0.2rem 1rem 1rem 1rem;
+  margin: 1rem 0 0 0;
+}
+
+.statusParams{
+  margin: 1rem 0 0 0;
+}
+
