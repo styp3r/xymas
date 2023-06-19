@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { Radar, RadarChart, PolarAngleAxis, LineChart, BarChart, Bar, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import SmallCard from './SmallCard';
+import NotificationsIcon from './Notifications'
 
 const supabase = createClient('https://lgydkxizvydkathymrad.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxneWRreGl6dnlka2F0aHltcmFkIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMTU5ODAsImV4cCI6MTk5OTc5MTk4MH0.nj-_Ft-7vGi22FnKEEfCh8eH5Cd3KimkjyOxagZsvHg');
 
@@ -15,8 +16,6 @@ const Option1 = () => {
 
   const [sum, setSum] = useState(0);
   const [sum1, setSum1] = useState(0);
-
-  const [notifNum, setNotifNum] = ('0');
 
   const handleYearChange = (event) => {
     setSelectedYear(event.target.value);
@@ -126,9 +125,8 @@ const Option1 = () => {
   return (
     <div id="option1Page">
       <div id="option1Content">
-        <div id = "option1TopBar">
-          <p style={{ fontWeight: "bold", margin: "0 0 3rem 0", fontSize: "25px", color: '#a6a6a6' }}>XyMas Dashboard</p>
-          <div id="notifications"><span class="material-symbols-rounded">notifications</span></div>
+        <div id="option1TopBar">
+          <p style={{ fontWeight: 800, margin: "0 0 3rem 0", fontSize: "25px", color: '#a6a6a6' }}>XyMas Dashboard</p>
         </div>
 
         <div id="heroContainer">
@@ -137,7 +135,7 @@ const Option1 = () => {
 
             <div id="welcomeMessage">
               <p style={{ color: '#4b4b4b', fontSize: '3rem', fontWeight: 300 }} >Hello <span style={{ fontWeight: 700 }}>Navjyot</span></p>
-              <p>Here are your latest updates. <span>You've got <span style={{ fontWeight: 700 }}>{notifNum}</span> notifications.</span></p>
+              <p>Here are your latest updates.</p>
             </div>
 
             <SmallCard key="totalSaleMonthly" title="TOTAL SALE (LAST 30 DAYS)" value={sum1} width='33rem' height='16rem' margin='0 0 1rem 0' bgColor='#ccfff2' color="#4b4b4b" />
@@ -242,7 +240,7 @@ const Option1 = () => {
             </ResponsiveContainer>
           </div>
         </div>
-
+        <NotificationsIcon />
       </div>
     </div>
   );
