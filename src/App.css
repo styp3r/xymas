@@ -4,20 +4,16 @@
   margin: 0 0 2rem 0;
 }
 
-#option1Page, #option2Page, #option3Page{
+#option1Page, #option2Page, #option3Page, #docsPage, #vendorsPage, #staffPage, #partnersPage, #contactsPage, #accessPage, #infrastructurePage{
   text-align: left;
   width: 95%;
   height: 100%;
   background-color: #f1f3f4;
   margin: 0 0 0 7rem;
-}
-
-#option1Page{
   opacity: 0;
   animation-name: card_appear;
   animation-duration: 1s;
   animation-iteration-count: 1;
-  animation-delay: 6.5s;
   animation-fill-mode: forwards;
 }
 
@@ -31,62 +27,62 @@
 #link1{
   animation-name: link_pulse;
   animation-duration: 0.5s;
-  animation-delay: 6s;
+  animation-delay: 1.1s;
 }
 
 
 #link2{
   animation-name: link_pulse;
   animation-duration: 0.5s;
-  animation-delay: 6.1s;
+  animation-delay: 1.2s;
 }
 
 #link3{
   animation-name: link_pulse;
   animation-duration: 0.5s;
-  animation-delay: 6.2s;
+  animation-delay: 1.3s;
 }
 
 #link4{
   animation-name: link_pulse;
   animation-duration: 0.5s;
-  animation-delay: 6.3s;
+  animation-delay: 1.4s;
 }
 
 #link5{
   animation-name: link_pulse;
   animation-duration: 0.5s;
-  animation-delay: 6.4s;
+  animation-delay: 1.5s;
 }
 
 #link6{
   animation-name: link_pulse;
   animation-duration: 0.5s;
-  animation-delay: 6.5s;
+  animation-delay: 1.6s;
 }
 
 #link7{
   animation-name: link_pulse;
   animation-duration: 0.5s;
-  animation-delay: 6.6s;
+  animation-delay: 1.7s;
 }
 
 #link8{
   animation-name: link_pulse;
   animation-duration: 0.5s;
-  animation-delay: 6.7s;
+  animation-delay: 1.8s;
 }
 
 #link9{
   animation-name: link_pulse;
   animation-duration: 0.5s;
-  animation-delay: 6.8s;
+  animation-delay: 1.9s;
 }
 
 #link10{
   animation-name: link_pulse;
   animation-duration: 0.5s;
-  animation-delay: 6.9s;
+  animation-delay: 2s;
 }
 
 @keyframes link_pulse{
@@ -141,7 +137,6 @@
   animation-name: navbar_appear;
   animation-duration: 2s;
   animation-iteration-count: 1;
-  animation-delay: 5s;
   animation-fill-mode: forwards;
 }
 
@@ -174,7 +169,13 @@
 #totalRevContainer{
   width: 41%;
   height: 34rem;
-  margin: 18rem 0 0 0;
+  margin: 0rem 0 0 0;
+}
+
+#welcomeMessage{
+  width: 33rem;
+  height: 13rem;
+  margin: 5rem 0 0 0;
 }
 
 #shopWisePerfContainer{

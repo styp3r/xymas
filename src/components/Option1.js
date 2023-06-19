@@ -16,6 +16,8 @@ const Option1 = () => {
   const [sum, setSum] = useState(0);
   const [sum1, setSum1] = useState(0);
 
+  const [notifNum, setNotifNum] = ('0');
+
   const handleYearChange = (event) => {
     setSelectedYear(event.target.value);
   };
@@ -129,25 +131,30 @@ const Option1 = () => {
         <div id="heroContainer">
 
           <div id="totalRevContainer">
-            <SmallCard key="totalSaleMonthly" title="TOTAL SALE (LAST 30 DAYS)" value={sum1} width='33rem' height='16rem' margin= '0 0 1rem 0' bgColor = '#ccfff2' color = "#4b4b4b"/>
-            <SmallCard key="totalSaleYearly" title="TOTAL SALE (LAST 1 YEAR)" value={sum} width='33rem' height='16rem' margin= '2rem 0 0 0'/>
+            <div id = "welcomeMessage">
+              <p><span style={{ fontWeight: 300}}>Hello</span> Navjyot</p>
+              <p>Here are your latest updates. <span>You've got <span style={{ fontWeight: 700 }}>{notifNum}</span> notifications.</span></p>
+            </div>
+
+            <SmallCard key="totalSaleMonthly" title="TOTAL SALE (LAST 30 DAYS)" value={sum1} width='33rem' height='16rem' margin='0 0 1rem 0' bgColor='#ccfff2' color="#4b4b4b" />
+            <SmallCard key="totalSaleYearly" title="TOTAL SALE (LAST 1 YEAR)" value={sum} width='33rem' height='16rem' margin='2rem 0 0 0' />
           </div>
 
           <div id="shopWisePerfContainer">
             <div className="shopWisePerformance">
               {/* insert radar chart for shopwise performance */}
-              <p style = {{color:'#929292', margin: '2rem 12rem 2rem 0'}}>AVERAGE PERFORMANCE</p>
+              <p style={{ color: '#929292', margin: '2rem 12rem 2rem 0' }}>AVERAGE PERFORMANCE</p>
               <ResponsiveContainer width="80%" height="80%">
                 <RadarChart cx="50%" cy="50%" outerRadius="80%" data={dataShopwise1}>
                   <PolarAngleAxis dataKey="shopName" />
-                  <Radar name="Mike" dataKey="avgMonthlySale" fill="#9481b1" fillOpacity={1}/>
+                  <Radar name="Mike" dataKey="avgMonthlySale" fill="#9481b1" fillOpacity={1} />
                 </RadarChart>
               </ResponsiveContainer>
             </div>
           </div>
 
-          <div id = "shopStatus">
-              <SmallCard key = "liveShopStatus" title = "OUTLET STATUS" width='16rem' height='52rem' margin= '0 0 0 2.3rem' overflow = "scroll"/>
+          <div id="shopStatus">
+            <SmallCard key="liveShopStatus" title="OUTLET STATUS" width='16rem' height='52rem' margin='0 0 0 2.3rem' overflow="scroll" />
           </div>
 
         </div>
