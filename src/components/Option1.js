@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { createClient } from '@supabase/supabase-js';
+//import { createClient } from '@supabase/supabase-js';
 import { Radar, RadarChart, PolarAngleAxis, LineChart, BarChart, Bar, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import SmallCard from './SmallCard';
-import ScrollCard from './ScrollCard';
+import ShopStatusCard from './ShopStatusCard';
 import Notifications from './Notifications'
+import supabase from './supabase'
 
-const supabase = createClient('https://lgydkxizvydkathymrad.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxneWRreGl6dnlka2F0aHltcmFkIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMTU5ODAsImV4cCI6MTk5OTc5MTk4MH0.nj-_Ft-7vGi22FnKEEfCh8eH5Cd3KimkjyOxagZsvHg');
+//const supabase = createClient('https://lgydkxizvydkathymrad.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxneWRreGl6dnlka2F0aHltcmFkIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMTU5ODAsImV4cCI6MTk5OTc5MTk4MH0.nj-_Ft-7vGi22FnKEEfCh8eH5Cd3KimkjyOxagZsvHg');
 
 const Option1 = () => {
   const [data, setData] = useState([]);
@@ -163,7 +164,7 @@ const Option1 = () => {
           </div>
 
           <div id="shopStatus">
-            <ScrollCard key="liveShopStatus" title="OUTLET STATUS" width='16rem' height='52rem' margin='0 0 0 2.3rem' overflow="scroll" color='#4b4b4b' />
+            <ShopStatusCard key="liveShopStatus" title="OUTLET STATUS" width='16rem' height='52rem' margin='0 0 0 2.3rem' overflow="scroll" color='#4b4b4b' />
           </div>
 
         </div>

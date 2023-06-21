@@ -1,6 +1,6 @@
-const ScrollCard = (props) => {
+const ShopStatusCard = (props) => {
     return (
-        <div className="scrollCard" style={{ width: props.width, height: props.height, margin: props.margin, background: props.bgColor, overflowY: props.overflow }}>
+        <div className="shopStatusCard" style={{ width: props.width, height: props.height, margin: props.margin, background: props.bgColor, overflowY: props.overflow }}>
             <p className="scrollCardTitle" style = {{fontWeight: 800}} >{props.title}</p>
             <div className="outletStatusList">
                 <div className="statusCard">
@@ -71,4 +71,4 @@ const ScrollCard = (props) => {
     );
 }
 
-export default ScrollCard;
+export default ShopStatusCard;
