@@ -1,9 +1,7 @@
 const ScrollCard = (props) => {
     return (
-        <div id={props.key} className="scrollCard" style={{ width: props.width, height: props.height, margin: props.margin, background: props.bgColor, overflowY: props.overflow }}>
+        <div className="scrollCard" style={{ width: props.width, height: props.height, margin: props.margin, background: props.bgColor, overflowY: props.overflow }}>
             <p className="scrollCardTitle" style = {{fontWeight: 800}} >{props.title}</p>
-            {/*CHANGE THIS TO SCROLLABLE CONTENT
-            <p className = "smallCardValue" style = {{color: props.color}}>{props.value}</p>*/}
             <div className="outletStatusList">
                 <div className="statusCard">
                     <p style={{ color: props.color, fontWeight: 800}}>BTM</p>
