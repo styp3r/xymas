@@ -56,7 +56,7 @@ const Option2 = () => {
     return (
         <div id="option2Page">
             <div id="option2Content">
-                <p style={{ fontWeight: 800, margin: "0 0 3rem 0", fontSize: "25px", color: '#a6a6a6' }}>Sales</p>
+                <p style={{ fontWeight: 800, margin: "0 0 3rem 2rem", fontSize: "25px", color: '#a6a6a6' }}>Sales</p>
 
                 <div id="onlineSale">
                     <p style={{ color: "#8b8b8b", fontSize: "14px", fontWeight: 800 }}>ONLINE SALE (LAST 30 DAYS)</p>

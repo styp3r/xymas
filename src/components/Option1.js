@@ -15,6 +15,10 @@ const Option1 = () => {
 
   const [dataShopwise1, setDataShopwise1] = useState([]);
 
+  const [isLoading1, setIsLoading1] = useState(true);
+  const [isLoading2, setIsLoading2] = useState(true);
+  const [isLoading3, setIsLoading3] = useState(true);
+
   const [sum, setSum] = useState(0);
   const [sum1, setSum1] = useState(0);
 
@@ -111,6 +115,7 @@ const Option1 = () => {
           throw error;
         }
         setDataShopwise1(data);
+        setIsLoading1(false);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -119,7 +124,7 @@ const Option1 = () => {
     {/*fetchMonthlyData(selectedYear);
     fetchDailyData(selectedMonth);
     fetchDailyData_MR();
-  fetchShopwiseData(); */}
+    fetchShopwiseData(); */}
 
   }, [selectedYear, selectedMonth]);
 
@@ -144,7 +149,7 @@ const Option1 = () => {
           </div>
 
           <div id="shopWisePerfContainer">
-            <div className="shopWisePerformance">
+            {isLoading1 ? (<p>Loading...</p>) : (<div className="shopWisePerformance">
               {/* insert radar chart for shopwise performance */}
               <p style={{ color: '#929292', fontWeight: 800, margin: '2rem 12rem 0 0' }}>OUTLET PERFORMANCE</p>
               <p style={{ color: '#929292', margin: '0.3rem 12rem 2rem 1.5rem', fontSize: '0.9rem' }}>based on monthly average sales</p>
@@ -154,7 +159,7 @@ const Option1 = () => {
                   <Radar name="Mike" dataKey="avgMonthlySale" fill="#9481b1" fillOpacity={1} />
                 </RadarChart>
               </ResponsiveContainer>
-            </div>
+            </div>)}
           </div>
 
           <div id="shopStatus">
@@ -165,7 +170,7 @@ const Option1 = () => {
 
         <div id="monthlyRevOverview">
           <p style={{ color: "#8b8b8b", fontSize: "14px", fontWeight: 800 }}>MONTHLY REVENUE OVERVIEW</p>
-          <div id="revOverviewCard1">
+          {isLoading2 ? (<p>Loading...</p>) : (<div id="revOverviewCard1">
             <select id="yearSelect" value={selectedYear} onChange={handleYearChange}>
               <option value="2018">2018</option>
               <option value="2019">2019</option>
@@ -197,12 +202,12 @@ const Option1 = () => {
                 <Line name="Total" type="monotone" dataKey="total" stroke="#009999" strokeWidth={8} />
               </LineChart>
             </ResponsiveContainer>
-          </div>
+          </div>)}
         </div>
 
         <div id="dailyRevOverview">
           <p style={{ color: "#8b8b8b", fontSize: "14px", fontWeight: 800 }}>DAILY REVENUE OVERVIEW</p>
-          <div id="revOverviewCard2">
+          {isLoading2 ? (<p>Loading...</p>) : (<div id="revOverviewCard2">
             <select id="monthSelect" value={selectedMonth} onChange={handleMonthChange}>
               <option value="January">January</option>
               <option value="February">February</option>
@@ -240,7 +245,8 @@ const Option1 = () => {
                 <Bar barSize={8} name="Total" type="monotone" dataKey="total" fill="#009999" />
               </BarChart>
             </ResponsiveContainer>
-          </div>
+          </div>)}
+          
         </div>
         <Notifications />
       </div>
