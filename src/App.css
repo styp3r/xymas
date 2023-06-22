@@ -485,7 +485,7 @@
   background-color: #793f3f;
 }
 
-#purchaseInfoItem{
+.purchaseInfoItem{
   border-radius: 0.5rem;
   padding: 0.5rem 0 0.5rem 0;
   margin: 0.5rem 0 0 0;
@@ -494,10 +494,12 @@
 .purchaseItemTitle{
   position: absolute;
   top: 7rem;
-  left: 4rem;
+  left: 2.5rem;
+  text-align: center;
 }
 
-.purchaseItem, .purchaseItemTitle{
+.purchaseItem{
+  position: relative;
   text-align: center;
 }
 
@@ -511,4 +513,21 @@
   color: #929292;
   display: inline-block;
   width: 8rem;
+}
+
+#paidStatus{
+  position: absolute;
+  right: 1.5rem;
+  border: none;
+  border-radius: 0.3rem;
+  color: #ffffff;
+  background-color: #00cc00;
+}
+
+#paidStatus:hover{
+  cursor: pointer;
+}
+
+#paidStatus:active{
+  background-color: #036d03;
 }

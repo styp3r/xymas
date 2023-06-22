@@ -14,7 +14,7 @@ const PurchaseInfoList = () => {
             try {
                 const { data, error } = await supabase
                     .from('purchasesList')
-                    .select('id, billDated, billVendorName, billNum, cgst, sgst, totalTax, billValue, isPaid')
+                    .select('id, billDated, billVendorName, billNum, uniqueItemCode, cgst, sgst, totalTax, billValue, isPaid')
                 if (error) {
                     throw error;
                 }
@@ -26,7 +26,7 @@ const PurchaseInfoList = () => {
             }
         };
 
-        //fetchPurchaseBillInfo();
+        fetchPurchaseBillInfo();
     }, []);
 
     return (
@@ -46,7 +46,7 @@ const PurchaseInfoList = () => {
                     </div>
                 <div className="purchaseInfoList-list">
                     {/* Fetch purchase bill data from server and display as scrollable list */}
-                    {isLoading ? (<p>Loading...</p>) : (purchaseBillData.map((pb) => <PurchaseInfoItem key={pb.id} billDated={pb.billDated} billVendorName={pb.billVendorName} billNum={pb.billNum} cgst = {pb.cgst} sgst = {pb.sgst} totalTax = {pb.totalTax} billValue={pb.billValue} isPaid={pb.isPaid} />))}
+                    {isLoading ? (<p>Loading...</p>) : (purchaseBillData.map((pb) => <PurchaseInfoItem key={pb.uniqueItemCode} id = {pb.id} billDated={pb.billDated} billVendorName={pb.billVendorName} billNum={pb.billNum} uniqueItemCode = {pb.uniqueItemCode} cgst = {pb.cgst} sgst = {pb.sgst} totalTax = {pb.totalTax} billValue={pb.billValue} isPaid={pb.isPaid} />))}
                 </div>
 
             </div>
