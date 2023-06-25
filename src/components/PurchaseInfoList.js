@@ -26,7 +26,7 @@ const PurchaseInfoList = () => {
             }
         };
 
-        fetchPurchaseBillInfo();
+        //fetchPurchaseBillInfo();
     }, []);
 
     return (

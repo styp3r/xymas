@@ -122,10 +122,10 @@ const Option1 = () => {
       }
     };
 
-    {/*fetchMonthlyData(selectedYear);
-    fetchDailyData(selectedMonth);
-    fetchDailyData_MR();
-    fetchShopwiseData(); */}
+    //fetchMonthlyData(selectedYear);
+    //fetchDailyData(selectedMonth);
+    //fetchDailyData_MR();
+    //fetchShopwiseData(); 
 
   }, [selectedYear, selectedMonth]);
 
@@ -171,7 +171,7 @@ const Option1 = () => {
 
         <div id="monthlyRevOverview">
           <p style={{ color: "#8b8b8b", fontSize: "14px", fontWeight: 800 }}>MONTHLY REVENUE OVERVIEW</p>
-          {isLoading2 ? (<p>Loading...</p>) : (<div id="revOverviewCard1">
+          <div id="revOverviewCard1">
             <select id="yearSelect" value={selectedYear} onChange={handleYearChange}>
               <option value="2018">2018</option>
               <option value="2019">2019</option>
@@ -203,12 +203,12 @@ const Option1 = () => {
                 <Line name="Total" type="monotone" dataKey="total" stroke="#009999" strokeWidth={8} />
               </LineChart>
             </ResponsiveContainer>
-          </div>)}
+          </div>
         </div>
 
         <div id="dailyRevOverview">
           <p style={{ color: "#8b8b8b", fontSize: "14px", fontWeight: 800 }}>DAILY REVENUE OVERVIEW</p>
-          {isLoading2 ? (<p>Loading...</p>) : (<div id="revOverviewCard2">
+          <div id="revOverviewCard2">
             <select id="monthSelect" value={selectedMonth} onChange={handleMonthChange}>
               <option value="January">January</option>
               <option value="February">February</option>
@@ -246,7 +246,7 @@ const Option1 = () => {
                 <Bar barSize={8} name="Total" type="monotone" dataKey="total" fill="#009999" />
               </BarChart>
             </ResponsiveContainer>
-          </div>)}
+          </div>
           
         </div>
         <Notifications />

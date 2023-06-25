@@ -9,19 +9,22 @@ const Option3 = () => {
 
         <div className="option3ContentContainer">
           <div className="option3ContentLeft">
-            <SmallCard key="totalOutflow30" title="TOTAL OUTFLOW (LAST 1 YEAR)" value='0' width='15rem' height='16rem' margin='2rem 0 0 0' />
-            <div className="rentInfoContainer">
-              <div className="rentInfoContainer-alignment">
-                <SmallCard key="totalRentPaidYearly" title="RENT PAYMENTS (LAST 1 YEAR)" value='0' bgColor='#4b4b4b' color="#ffffff" width='12rem' height='6rem' margin='2rem 0 0 0' />
-                <div className="rentPaidStatus">
+            <div className="outstandingInfoContainer">
+              <div className="outstandingInfoContainer-alignment">
+                <SmallCard key="" title="" value='0' bgColor='#4b4b4b' color="#ffffff" width='12rem' height='15rem' margin='2rem 0 0 0' />
+                <div className="outstandingStatus">
                   {/*All shops names and rent amount with paid/unpaid status for current month*/}
                 </div>
               </div>
             </div>
+
           </div>
 
           <div className="option3ContentRight">
-            <SmallCard key="totalOutstandingPayments" title="TOTAL OUTSTANDING PAYMENTS" value='0' width='33rem' height='16rem' margin='2rem 0 0 0' />
+            <div className="option3ContentRight-headerCards">
+              <SmallCard key="totalOutflow30" title="TOTAL OUTFLOW (LAST 1 YEAR)" value='0' width='31rem' height='16rem' margin='2rem 0 0 0' />
+              <SmallCard key="totalOutstandingPayments" title="OUTSTANDING PAYMENTS TOTAL AMOUNT" value='0' width='31rem' height='16rem' margin='2rem 0 0 3rem' />
+            </div>
             <div className="outstandingInfoContainer">
               <PurchaseInfoList />
             </div>

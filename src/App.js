@@ -11,8 +11,10 @@ import Partners from './components/Partners'
 import Contacts from './components/Contacts'
 import Access from './components/Access'
 import Infrastructure from './components/Infrastructure'
+import './components/CustomScrollbar.css';
 
 function App() {
+
   return (
     <Router>
     <div className="App">
